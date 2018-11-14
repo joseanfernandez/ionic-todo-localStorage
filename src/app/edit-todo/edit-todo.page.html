@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button href="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>EditTodo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding id="range">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label id="inputTitle" position="floating">Título</ion-label>
+          <ion-input required type="text" clearInput [(ngModel)]="todo.title"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label id="inputDescription" position="floating">Descripción</ion-label>
+          <ion-input required type="text" clearInput [(ngModel)]="todo.description"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label>Prioridad</ion-label>
+          <ion-range min="1" max="3" step="1" snaps="true" color="dark" pin="true" [(ngModel)]="todo.priority"
+            (ionChange)="notify()"></ion-range>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label>Categoría</ion-label>
+          <ion-select [(ngModel)]="category" name="subject" [interfaceOptions]="customActionSheetOptions" interface="action-sheet"
+            placeholder="">
+            <ion-select-option value="1">Personal</ion-select-option>
+            <ion-select-option value="2">Trabajo</ion-select-option>
+            <ion-select-option value="3">Estudios</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="3">
+
+      </ion-col>
+      <ion-col size="6">
+        <ion-button (click)="send()" expand="full" shape="round" color="dark" fill="solid">Guardar</ion-button>
+      </ion-col>
+      <ion-col size="3"></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
